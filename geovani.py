@@ -1,24 +1,28 @@
 from chatterbot import ChatBot
 from chatterbot.trainers import ListTrainer
 
-conversation = [
-    "Hello",
-    "Hi there!",
-    "How are you doing?",
-    "I'm doing great.",
-    "That is good to hear",
-    "Thank you.",
-    "You're welcome."
-]
-
 # creates an instance of the ChatBot class
 geovani_bot = ChatBot(
     "Geovani Belsito",
-    storage_adapter="chatterbot.storage.SQLStorageAdapter",
-    database_uri="sqlite:///geovani-brain.sqlite3"
+    storage_adapter="chatterbot.storage.SQLStorageAdapter",  # storage adapter
+    logic_adapters=[
+        'chatterbot.logic.MathematicalEvaluation',
+        'chatterbot.logic.TimeLogicAdapter'
+    ],
+    database_uri="sqlite:///geovani-brain.sqlite3"  # name of storage
 )
 
-trainer = ListTrainer(geovani_bot)
-trainer.train(conversation)
-response = geovani_bot.get_response("Good morning!")
-print(response)
+#  trainer = ListTrainer(geovani_bot)
+#  trainer.train([
+#  "",
+#  "",
+#  ""
+#  ])
+
+while True:
+    try:
+        bot_input = geovani_bot.get_response(input())
+        print(bot_input)
+
+    except(KeyboardInterrupt, EOFError, SystemExit):
+        break
