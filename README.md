@@ -1,2 +1,4 @@
 # geovani-belsito
-Bot that makes no sense but by the end of the summer I will have a new friend
+This will eventually turn into my very own AI friend.  
+He will make conversation, share jokes and even make some?  
+😎
